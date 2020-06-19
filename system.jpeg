@@ -1,0 +1,112 @@
+import RPi.GPIO as GPIO
+import time
+GPIO.setmode(GPIO.BOARD) 
+stepPin1 = 31 
+stepPin2 = 33
+stepPin3 = 35
+stepPin4 = 37
+GPIO.setup(stepPin1, GPlO.OUT)
+GPIO.setup(stepPin2, GPIO.OUT)
+GPIO.setup(stepPin3, GPlO.OUT)
+GPIO.setup(stepPin4, GPlO.OUT)
+GPIO.output(stepPin1, False)
+GPIO.output(stepPin2, False)
+GPIO.output(stepPin3, False)
+GPIO.output(stepPin4, False)
+def singleStep(stepval1, stepval2, stepvaI3, stepval4): 
+GPIO.output(stepPin1, stepval1)
+GPIO.output(stepPin2, stepval2)
+GPIO.output(stepPin3, stepvaI3)
+GPIO.output(stepPin4, stepvaI4)
+def clockWiseRotate(delay, steps1): 
+for i in range (0, stepsl):
+singIeStep(1, 0, 0, 0)
+time.sleep(delay)
+singIeStep(1, 1, 0, 0)
+time.sleep(delay)
+singIeStep(O, 1, 0, O)
+time.sleep(delay)
+singleStep(0, 1, 1, O)
+time.sleep(delay)
+singleStep(0, 0, 1, 0)
+time.sleep(delay)
+singIeStep(O, 0, 1, 1)
+time.sleep(delay)
+singIeStep(O, O, 0, 1)
+time.sleep(delay)
+singIeStep(1, 0, 0, 1)
+time.sleep(delay)
+def anticlockWiseRotate(delay, steps2): 
+for i in range (0, stepsZ):
+singIeStep(1, O, 0, 1)
+time.sleep(delay)
+singIeStep(0, 0, 0, 1)
+time.sleep(delay)
+singleStep(0, 0, 1, 1)
+time.sleep(delay)
+singIeStep(O, 0, 1, 0)
+time.sleep(delay)
+singleStep(0, 1, 1, 0)
+time.sleep(delay)
+singIeStep(O, 1, 0, O)
+time.sleep(delay)
+singleStep(1, 1, 0, O)
+time.sleep(delay)
+singleStep(1, O, 0, 0)
+time.sleep(delay)
+try:
+while 1: 
+delay = input("Enter delay betwwen steps (in miliseconds):
+stepsl = input("How many steps clockwise?:
+stepsZ = input("How many steps Anticlcokwise?:
+clockWiseRotate(int(delay)/1000.0, int(steps1))
+anticlockWiseRotate(int(delay)/ 1000.0, int(steps2))
+finally:
+GPIO.cIeanup()
+
+
+
+
+
+
+$ tar -xvf filename
+$ sudo usermod -a -G spi,gpio pi
+$ sudo apt-get install build-essential python3-dev python-pip libfreetype6-dev libjpeg-div
+$ sudo -i pip install --upgrade pip setuptools
+$ sudo python3 -m pip install pip --upgrade
+$ sudo -H pip install --upgrade luma.led_matrix
+import re
+import time
+import argparse
+from luma.led_matrix.device import max7219
+from luma.core.interface.serial import spi,noop
+from luma.core.render import canvas
+from luma.core.virtual import viewport
+from luma.core.legacy import text,show_message
+from luma.core.legacy.font import proportional,CP437_FONT,TINY_FONT,SINCLAIR_FONT,LCD_FONT
+def grid_demo():
+    serial=spi(port=0,device=0,gpio=noop())
+    device=max7219(serial)
+    print("Created device")
+    msg="MAX7219 LED Matrix Grid Demo"
+    print(msg)
+    show_message(device,msg,fill="white",font=proportional(CP437_FONT),scroll_delay=0.1)
+    time.sleep(0.5)
+    msg1=input("Enter text:")
+    print(msg1)
+    show_message(device,msg1,fill="white",font=proportional(LCD_FONT),scroll_delay=0.1)
+    print('Brightness')
+    show_message(device,msg1,fill="white",scroll_delay=0.1)
+    time.sleep(0.5)
+    print('Alternative font!')
+    show_message(device,msg1,fill="white",font=proportional(SINCLAIR_FONT),scroll_delay=0.1)
+    time.sleep(0.5)
+    print('Proportional font - character are squeezed together!')
+    show_message(device,msg1,fill="white",font=proportional(SINCLAIR_FONT),scroll_delay=0.1)
+if __name__=="__main__":
+    try:
+        grid_demo()
+    except KeyboardInterrupt:
+        pass
+
+$ python filename.py
