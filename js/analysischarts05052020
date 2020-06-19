@@ -1,0 +1,56 @@
+Highcharts.chart('projbypartnercontainer', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: ''
+    },
+    credits: {
+        enabled:false
+    },
+    exporting: {
+        enabled:false
+    },
+    tooltip: {
+        enabled:false
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['AA', 'C/CAN', 'NCDA', 'PATH', 'WHF','WB'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Number of projects',
+            align: 'middle'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+   
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: false
+            }
+        }
+    },
+    legend: {
+      enabled: false  
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        colorByPoint:true,
+        colors:['#F26333','#005B9A','#237F58','#A5247A','#D2342A','#25A0C3'],
+        data: [3, 9, 5, 3, 4,11]
+    }]
+});
